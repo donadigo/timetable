@@ -48,8 +48,6 @@ namespace Timetable.FileManager {
                 current = new TaskDay ();
                 current.day_header = day_header;
                 days.add (current);
-
-                curtask = new Task ();
             } else if (line.has_prefix ("-")) {
                 curtask.desc = read_desc (tokens, i).strip ().substring (1).strip ();
             } else if (line.has_prefix ("<")) {
@@ -58,6 +56,7 @@ namespace Timetable.FileManager {
                 curtask.from_hour = from;
                 curtask.to_hour = to;
                 current.add_task (curtask);
+                curtask = new Task ();
             }
 
             i++;
